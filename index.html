@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CodeCompass</title>
+    <link rel="stylesheet" href="styleidx.css">
+    <link rel="shortcut icon" href="media/favicon.png" type="image/x-icon">
+    <link
+  href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+  rel="stylesheet"
+/>
+</head>
+<body>
+    
+<video autoplay muted loop playsinline class="bg-video" id="bgVideo">
+    <source src='media/video.mp4' type="video/mp4">
+  </video>
+
+  <!-- Overlay (use class overlay--teal if you want subtle teal tint) -->
+  <div class="overlay overlay--teal" aria-hidden="true"></div>
+
+  <section class="page page-hero" id="page1">
+  <div class="hero">
+    <h1 id="nameHeading">CodeCompass</h1>
+    <h1 class="bg-text">Measure Your <span id="span1"><i>Growth. Showcase</i></span> Your Journey.</h1>
+    <p id="subHeading">Analyze. Improve. Level Up.</p>
+
+    <div class="center-content">
+        <!-- <img id="man-image" src="media/man.png" alt="" srcset=""> -->
+    </div>
+    
+    <div id="buttonDiv">
+      <div class="buttonMain" onclick="showFormSection()">Get Insights</div>
+    </div>
+  </div>
+</section>
+
+<section class="form-section" style="display:none;">
+
+  <div class="back-to-hero" aria-label="Back to landing" onclick="showHero()"><i class="ri-home-8-line"></i></div>
+
+  <div class="form-container">
+        <h2>Start Your Analysis</h2>
+
+        <form id="profileForm">  
+
+            <!-- Years of Experience -->
+            <div class="input-group">
+                <label for="experience">Years of Experience</label>
+                <select id="experience" required>
+                    <option value="">Select Years</option>
+                    <option value="1">1 Year</option>
+                    <option value="2">2 Years</option>
+                    <option value="3">3 Years</option>
+                    <option value="4">4 Years</option>
+                    <option value="5">5+ Years</option>
+                </select>
+            </div>
+
+            <!-- Websites Developed -->
+            <div class="input-group">
+                <label for="websites">Number of Websites Developed</label>
+                <input type="number" id="websites" placeholder="Enter number of websites" required>
+            </div>
+
+            <!-- Apps Developed -->
+            <div class="input-group">
+                <label for="apps">Number of Apps Developed</label>
+                <input type="number" id="apps" placeholder="Enter number of apps" required>
+            </div>
+
+            <!-- Measure Button -->
+            <button class="formButton" type="button" onclick="measureProfile()" >Measure Profile</button>
+
+        </form>
+    </div>
+
+</section>
+   <!-- <div class="side-text" data-text="TRACKING EXPERIENCE ✦ MEASURING IMPACT ✦ DEFINING EXCELLENCE">
+    FILL TO LET US KNOW YOU!
+</div> -->
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var video = document.getElementById("bgVideo");
+  video.playbackRate = 0.7;   
+});
+</script>
+
+<script>
+function showFormSection() {
+  document.querySelector('.form-section').style.display = 'flex';
+  document.querySelector('.hero').style.display = 'none';
+}
+function showHero() {
+  document.querySelector('.form-section').style.display = 'none';
+  const hero = document.querySelector('.hero');
+  if (hero) hero.style.display = 'flex';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+<script src="form.js"></script>
+</body>
+</html>
+
+

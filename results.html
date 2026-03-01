@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" href="media/favicon.png" type="image/x-icon">
+  <title>CodeCompass</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Background Video (below UI) -->
+  <video autoplay muted loop playsinline class="bg-video" id="bgVideo" poster="media/results-fallback.jpg" aria-hidden="true">
+    <source src="media/video.mp4" type="video/mp4" />
+    <!-- If neither plays, the overlay + body fallback color will show -->
+  </video>
+
+  <!-- Dark overlay (with subtle teal aura) above video -->
+  <div class="overlay overlay--teal" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
+      <h1 class="app-title">Profile Statistics — Results</h1>
+  </header>
+
+  <main id="main" class="container" tabindex="-1">
+    <!-- Floating teal particles (subtle, behind content) -->
+    <div class="particles" aria-hidden="true"></div>
+
+    <!-- Error Card (hidden by default; show via JS if invalid inputs) -->
+    <section id="errorCard" class="card card-error" hidden aria-live="polite">
+      <h2 class="card-title">We couldn’t find valid inputs</h2>
+      <p>Please go back and complete the form, then submit again to view your results.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="form.html">Back to Form</a>
+        <a class="btn btn-ghost" href="index.html">Start Over</a>
+      </div>
+    </section>
+
+    <!-- RESULTS GRID -->
+    <section id="resultsGrid" class="results-grid">
+      <!-- STATUS / SCORE -->
+      <article class="card status-card" aria-live="polite">
+        <div class="strength-ring" aria-hidden="true">
+          <span class="ring-label">Profile Strength</span>
+        </div>
+
+        <header class="status-header">
+          <span id="statusBadge" class="badge proficient" aria-label="Profile status badge">Proficient</span>
+          <h2 id="statusTitle" class="status-title">Proficient</h2>
+        </header>
+
+        <p id="statusSubtitle" class="status-subtitle">
+          Confident capability with room to specialize further.
+        </p>
+
+        <div class="score-block">
+          <div class="score" aria-label="Overall score">
+            <span id="scoreValue">72</span>
+            <span class="score-den">/100</span>
+          </div>
+          <div class="score-meta">
+            <div class="meta-item"><strong>Experience:</strong> <span id="expText">6 years</span></div>
+            <div class="meta-item"><strong>Websites:</strong> <span id="webText">15</span></div>
+            <div class="meta-item"><strong>Apps:</strong> <span id="appsText">8</span></div>
+          </div>
+        </div>
+
+        <div class="progress-wrap" aria-label="Profile score progress">
+          <div class="progress-track">
+            <div class="progress-fill" style="--pct: 72%;"></div>
+          </div>
+          <div class="progress-ticks" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+
+        <p class="persona-tag" aria-label="Persona">Builder Archetype</p>
+        <hr class="neon-divider" />
+      </article>
+
+      <!-- HIGHLIGHTS -->
+      <article class="card">
+        <h3 class="card-title">Highlights</h3>
+        <ul id="highlightsList" class="bullets">
+          <li>Strong app delivery focus with 8 apps shipped.</li>
+          <li>Balanced capability across apps and 15 websites.</li>
+        </ul>
+      </article>
+
+      <!-- IMPROVEMENTS -->
+      <article class="card">
+        <h3 class="card-title">Improvements &amp; Recommendations</h3>
+        <ul id="improvementsList" class="bullets">
+          <li>Ship 2–3 micro‑apps with testing and CI/CD to deepen end‑to‑end skills.</li>
+          <li>Target Lighthouse 90+ on key pages; address accessibility (WCAG) issues.</li>
+        </ul>
+      </article>
+
+      <!-- ROADMAP -->
+      <article class="card roadmap-card">
+        <h3 class="card-title">Suggested Roadmap</h3>
+        <ol class="roadmap">
+          <li>
+            <h4>Immediate (0–2 weeks)</h4>
+            <p>Ship 1–2 micro‑apps and improve performance on existing sites.</p>
+          </li>
+          <li>
+            <h4>Short‑term (1–2 months)</h4>
+            <p>Add CI/CD, tests, and accessibility checks to your workflow.</p>
+          </li>
+          <li>
+            <h4>Long‑term (3–6 months)</h4>
+            <p>Publish case studies with outcomes; mentor or contribute to OSS.</p>
+          </li>
+        </ol>
+      </article>
+
+      <!-- SUMMARY -->
+      <aside class="card utilities-card">
+        <h3 class="card-title">Summary</h3>
+        <div class="summary">
+          <p><strong>Experience:</strong> <span id="summaryExp">6 years</span></p>
+          <p><strong>Websites:</strong> <span id="summaryWeb">15</span></p>
+          <p><strong>Apps:</strong> <span id="summaryApps">8</span></p>
+          <p id="capsNote" class="note" hidden>Values above caps were normalized for fair scoring.</p>
+        </div>
+
+        <div class="btn-row">
+          <a class="btn btn-ghost" href="index.html">Start Over</a>
+        </div>
+      </aside>
+    </section>
+
+    <!-- No-JS notice -->
+    <noscript>
+      <section class="card card-error" role="status">
+        <p><strong>JavaScript is disabled.</strong> The results will show static placeholders only.</p>
+      </section>
+    </noscript>
+  </main>
+
+  <!-- Team Footer (prints too) -->
+  <footer class="site-footer container" role="contentinfo">
+    <div class="team">
+      <p class="team-name"><strong>Team:</strong> GlitchHunt3rs</p>
+      <ul class="team-list">
+        <li><span class="member-name">Mansi Patel</span> • <span class="member-contact">2479385@cognizant.com</span></li>
+        <li><span class="member-name">Gnaneshwar Reddy Yenna</span> • <span class="member-contact">2479468@cognizant.com</span></li>
+        <li><span class="member-name">Nishanthi V</span> <span class="member-contact">2479598@cognizant.com</span></li>
+        <li><span class="member-name">Sanjeevi R</span> <span class="member-contact">2479626@cognizant.com</span></li>
+        <li><span class="member-name">Ganapathiraju Aneesha Varma</span> <span class="member-contact">2479979@cognizant.com</span></li>
+      </ul>
+    </div>
+    <small>© 2026 GlitchHunt3rs • Profile Statistics App</small>
+  </footer>
+
+  <script>
+document.addEventListener("DOMContentLoaded", function() {
+  var video = document.getElementById("bgVideo");
+  video.playbackRate = 0.6;   
+});
+</script>
+  <script src="results.js"></script>
+</body>
+</html>
+``
